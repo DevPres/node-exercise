@@ -6,27 +6,28 @@ require('dotenv').config();
 const db = require('../db/index.js')
 
 const handleLogin = async (req, res) => {
-    const { user, pwd } = req.body;
-    if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
+    const { username, pwd } = req.body;
+    if (!username || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
     // check if user exist
-    let foundUser = await db.query(`SELECT * FROM users WHERE username=$1`, [user.username]);
-    if (!foundUser) return res.status(401).json({'message': 'This user not exist!' }); //User exist 
+    let user = await db.query(`SELECT * FROM users WHERE username=$1`, [username]).then(res => res.rows.length ? res.rows[0] : null);
+    if (!user) return res.status(401).json({'message': 'This user not exist!' }); //User exist 
     // evaluate password 
-    const match = await bcrypt.compare(pwd, foundUser.pwd);
+    const match = await bcrypt.compare(pwd, user.pwd);
     if (match) {
         // create JWTs
         const accessToken = jwt.sign(
-            { "id": foundUser.id, "username": foundUser.username },
+            { "id": user.id, "username": user.username },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '30s' }
+            { expiresIn: '1d' }
         );
         const refreshToken = jwt.sign(
-            { "id": foundUser.id, "username": foundUser.username },
+            { "id": user.id, "username": user.username },
             process.env.REFRESH_TOKEN_SECRET,
             { expiresIn: '1d' }
         );
-        //await usersDB.update({"id": foundUser.id, "refresh_token": refreshToken })
-        res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
+        await db.query(`UPDATE users SET refresh_token=$1 WHERE id=$2`, [refreshToken,user.id])
+        //await db.query(`SELECT * FROM users`).then(res => console.log(res))
+        res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: false, maxAge: 24 * 60 * 60 * 1000 });
         res.json({ accessToken });
     } else {
         res.sendStatus(401);
