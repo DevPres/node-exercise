@@ -20,6 +20,8 @@ app.use(cookieParser());
 // defining routes and controller
 app.use('/register', require("./routes/register.js"));
 app.use('/auth', require('./routes/auth'));
+app.use('/refresh', require('./routes/refresh'));
+app.use('/logout', require('./routes/logout'));
 
 // protected routes
 app.use(verifyJWT);
