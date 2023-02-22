@@ -8,7 +8,7 @@ const handleLogout = async (req, res) => {
     const refreshToken = cookies.jwt;
     
     let user = await db.query(`SELECT * FROM users WHERE refresh_token=$1`, [refreshToken])
-        .then(res => res.rows.length ? res.rows[0] : null);
+        .then(({rows}) => rows.length ? rows[0] : null);
     if (user) {
         await db.query(`UPDATE users SET refresh_token=null WHERE id=$1`, [user.id]);
     }
