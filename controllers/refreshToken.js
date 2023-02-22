@@ -7,8 +7,9 @@ const handleRefreshToken = async (req, res) => {
     const cookies = req.cookies;
     if (!cookies?.jwt) return res.sendStatus(401);
     const refreshToken = cookies.jwt;
+
     let user = await db.query(`SELECT * FROM users WHERE refresh_token=$1`, [refreshToken])
-        .then(res => res.rows.length ? res.rows[0] : null)
+        .then(({rows}) => rows.length ? rows[0] : null)
     if (!user) return res.status(403).json({'message': 'Something go wrong' }); //User exist 
 
     //evaluate jwt 
@@ -20,7 +21,7 @@ const handleRefreshToken = async (req, res) => {
             const accessToken = jwt.sign(
                 {"id": decoded.id, "username": decoded.username },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '1d' }
+                { expiresIn: '5m' }
             );
             res.json({ accessToken })
         }

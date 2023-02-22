@@ -6,7 +6,7 @@ const handleRegistration = async (req, res) => {
     const { username, pwd } = req.body;
     if (!username || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
     // check if user exist yet
-    let user = await db.query(`SELECT * FROM users WHERE username=$1`, [username]).then(res => res.rows.length ? res.rows[0] : null)
+    let user = await db.query(`SELECT * FROM users WHERE username=$1`, [username]).then(({rows}) => rows.length ? rows[0] : null)
     if (user) return res.status(409).json({'message': 'User exist, try to login!' }); //User exist 
     try {
         //encrypt the password and store
