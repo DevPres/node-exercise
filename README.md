@@ -1,6 +1,6 @@
 # Assignment
 
-- Il work plan con il Kanban sfruttato durante il lavoro lo si puo trovare a questo [link](https://presdario.notion.site/Assignment-92680a4112f54109a150dfab6586c838)
+- Il work plan con il Kanban sfruttato durante il lavoro lo si puo trovare a questo [link](https://presdario.notion.site/exercise-68627171e1a740e582465ec9da2a910e)
 
 - A questo [link](https://www.postman.com/presdev/workspace/assignment/overview) si puo visualizzare la collection postman
 
