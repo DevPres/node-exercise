@@ -78,7 +78,8 @@ Per quanto riguarda l'eliminazione dal carrello ho deciso di ragionare cosi:
 - Viene chiamato l'endpoint di eliminazione dal carrello con l''id dellelelmnto del carrello da diminuire (tabella cart_product)
 - Tolgo - 1 alla quantità di prodotto
 - Se il carrello è vuoto distruggo la sessione e ritorno 
-altrimenti
+
+Altrimenti
 - Resetto i prezzi togliendo la scontistica (per essere sicuro di non applicare lo sconto a degli elementi gia scontati)
 - Calcolo se ci sono delle scontistiche da applicare, e in caso positivo le applico
 - ricalcolo il totale del carrello al netto della scontistica
