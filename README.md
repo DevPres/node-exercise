@@ -6,7 +6,7 @@
 
 - Per rendere piu completo l'esercizio, ho pensato di predisporre un ambiente di test con docker e postman. Per installare l'environment di test è necessario:
     - installare docker e docker-compose
-    - aver installato postman o postman-agent
+    - aver installato postman-desktop-agent
     
 ## Avviare l''ambiente di test
 
@@ -42,7 +42,7 @@ $ docker-compose up (docker compose up su ARCH)
 
 - connettiti a questo [link](https://www.postman.com/presdev/workspace/assignment/overview) per visualizzare la collection di API su postman
 
-- Se si ha installato postman desktop o il postman agent si puo passare al test (altrimenti le chiamate su localhost non possono partire)
+- Se si ha il postman agent si puo passare al test (altrimenti le chiamate su localhost non possono partire)
 
 
 ## NOTE SULL'ESERCIZIO
