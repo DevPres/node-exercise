@@ -20,6 +20,8 @@ services:
       - data:/data/db
       # copy the sql script to create tables
       - ./db/create-tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      # copy the sql script to seed tables
+      - ./db/seed-tables.sql:/docker-entrypoint-initdb.d/seed_tables.sql
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}

@@ -32,8 +32,9 @@ app.use('/product', require('./routes/product'))
 
 // protected routes
 app.use(verifyJWT);
+app.use('/cart', require('./routes/cart'))
 
 app.use(verifyAdmin);
-app.use('/cms/product', require('./routes/cms/product'));
+app.use('/crm/product', require('./routes/crm/product'));
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
