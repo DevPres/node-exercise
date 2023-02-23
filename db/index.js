@@ -1,4 +1,6 @@
 const { Pool } = require("pg");
+
+// Hear i'm connecting to db and exporting a static method to do queries
 const pool = new Pool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
