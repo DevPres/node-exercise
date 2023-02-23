@@ -30,7 +30,7 @@ $ npm i
 //da terminale dai il comando node per aprire la shell di node
 $ node
 
-$ require('crypto).randomBytes(64).toString('hex')
+$ require('crypto').randomBytes(64).toString('hex')
 ```
 
 - Copia l'otput nel file .env nell'ACCESS_TOKEN_SECRET, poi dai nuovamente il comando e copia il nuovo output nel file .env nel REFRESH_TOKEN_SECRET
