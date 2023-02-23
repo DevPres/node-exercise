@@ -84,3 +84,6 @@ altrimenti
 - ricalcolo il totale del carrello al netto della scontistica
 - ritorno il carrello
 
+### cose lasciate fuori
+Purtroppo non sono riuscito a completare l'esercizio come avrei voluto, ad esempio non sono stati implemntati i test, e non sono riuscito a creare la parte successiva alla vendita del prodotto, come una tabella dove salvare le transazioni eseguite, cose le quali erano nel mio progetto (quindi per ora l'applicativo si ferma nel permettere la composizione del carrello e l'applicazione della scontisctica).
+Purtroppo non sono riouscito a lavorare il weekend quindi quei tre giorni in piu mi avrebbero dato la possibilitàa di completarlo, ma mi ritengo comunque soddisfatto poichè è il primo web service complesso che scrivo con node.js ed è la prima volta che uso postgresSQL al di fuori di supabase.
