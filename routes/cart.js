@@ -11,7 +11,6 @@ router.route('/product/:product_id')
 router.route('/product/:cart_product_id')
     .delete(cartController.deleteFromCart);
 
-
 module.exports = router;
 
 
