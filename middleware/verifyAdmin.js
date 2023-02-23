@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const verifyAdmin = (req, res, next) => {
     // For a future protection of this route
-    console.log('Verify if admin')
+    return res.status(500).json({'message': 'This route is not acitve'})
     next();
 }
 
