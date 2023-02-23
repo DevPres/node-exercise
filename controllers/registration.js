@@ -3,6 +3,7 @@ const db = require('../db/index.js')
 
 
 const handleRegistration = async (req, res) => {
+    console.log('passo');
     const { username, pwd } = req.body;
     if (!username || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
     // check if user exist yet

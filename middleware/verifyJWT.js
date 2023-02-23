@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 // middleware for verifying JWT token and inject user id in req object
 const verifyJWT = (req, res, next) => {
+    console.log('middleware')
     const authHeader = req.headers['authorization'];
     if (!authHeader) return res.sendStatus(401);
     const token = authHeader;
