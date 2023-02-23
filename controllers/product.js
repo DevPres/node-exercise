@@ -2,7 +2,6 @@ const db = require('../db/index.js')
 
 
 const getAllProducts = async (req, res) => {
-    console.log('controller')
     const products = await db.query(`SELECT * FROM products`)
         .then(({rows}) => rows)
     return res.status(200).json({"products": [...products]})
@@ -13,7 +12,7 @@ const createNewProduct = async (req, res) => {
     if(!code || !name || !price) return res.status(400).json({'message': 'code,name and price are required!'})
 
     try {
-        await db.query(`INSERT INTO products VALUES ($1,$2,$3)`, [code,name,price]);
+        await db.query(`INSERT INTO products (code,name,price) VALUES ($1,$2,$3)`, [code,name,price]);
         return res.status(200).json({'message': 'Product Saved'})
     } catch (err) {
         console.log(err);
